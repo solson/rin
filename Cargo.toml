@@ -3,6 +3,8 @@ authors = ["Scott Olson <scott@solson.me>"]
 name = "rin"
 version = "0.1.0"
 description = "A cat(1) replacement for humans"
+repository = "https://github.com/solson/rin"
+license = "MIT"
 
 [dependencies]
 clap = "2.6.0"
