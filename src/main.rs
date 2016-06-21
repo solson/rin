@@ -11,13 +11,11 @@ fn main() {
         .about(env!("CARGO_PKG_DESCRIPTION"))
         .arg(Arg::with_name("INPUT")
              .multiple(true)
+             .required(true)
              .help("The file(s) to display"))
         .get_matches();
 
-    let files = match matches.values_of("INPUT") {
-        Some(values) => values.collect(),
-        None => vec!["-"],
-    };
+    let files: Vec<&str> = matches.values_of("INPUT").unwrap().collect();
 
     let mut first = true;
     for &filename in &files {
@@ -27,10 +25,6 @@ fn main() {
             println!("# {}", filename);
         }
 
-        if filename == "-" {
-            io::copy(&mut io::stdin(), &mut io::stdout()).unwrap();
-        } else {
-            io::copy(&mut File::open(filename).unwrap(), &mut io::stdout()).unwrap();
-        }
+        io::copy(&mut File::open(filename).unwrap(), &mut io::stdout()).unwrap();
     }
 }
