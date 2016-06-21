@@ -1,6 +1,8 @@
 [package]
+authors = ["Scott Olson <scott@solson.me>"]
 name = "rin"
 version = "0.1.0"
-authors = ["Scott Olson <scott@solson.me>"]
+description = "A cat(1) replacement for humans"
 
 [dependencies]
+clap = "2.6.0"
