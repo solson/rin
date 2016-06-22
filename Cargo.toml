@@ -2,7 +2,7 @@
 authors = ["Scott Olson <scott@solson.me>"]
 name = "rin"
 version = "0.2.0"
-description = "A cat(1) replacement for humans"
+description = "A cat(1) replacement for humans."
 repository = "https://github.com/solson/rin"
 license = "MIT"
 
