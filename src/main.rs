@@ -19,9 +19,10 @@ fn main() {
 
     let files: Vec<&OsStr> = matches.values_of_os("FILE").unwrap().collect();
 
-    let mut first = true;
-    for &filename in &files {
-        if first { first = false; } else { println!(""); }
+    for (i, &filename) in files.iter().enumerate() {
+        if i != 0 {
+            println!("");
+        }
 
         if files.len() > 1 {
             println!("# {}", filename.to_string_lossy());
