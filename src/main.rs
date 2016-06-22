@@ -8,7 +8,6 @@ use std::io;
 fn main() {
     let matches = App::new(env!("CARGO_PKG_NAME"))
         .version(env!("CARGO_PKG_VERSION"))
-        .author("Scott Olson <scott@solson.me>")
         .about(env!("CARGO_PKG_DESCRIPTION"))
         .setting(AppSettings::ArgRequiredElseHelp)
         .arg(Arg::with_name("FILE")
