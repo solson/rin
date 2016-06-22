@@ -1,4 +1,5 @@
 extern crate clap;
+extern crate term;
 
 use clap::{Arg, App, AppSettings};
 use std::ffi::OsStr;
@@ -17,6 +18,8 @@ fn main() {
         .get_matches();
 
     let files: Vec<&OsStr> = matches.values_of_os("FILE").unwrap().collect();
+    let mut out = term::stdout().unwrap();
+    out.reset().unwrap();
 
     for (i, &filename) in files.iter().enumerate() {
         if i != 0 {
@@ -24,7 +27,10 @@ fn main() {
         }
 
         if files.len() > 1 {
-            println!("# {}", filename.to_string_lossy());
+            out.fg(term::color::GREEN).unwrap();
+            out.attr(term::Attr::Bold).unwrap();
+            writeln!(out, "{}", filename.to_string_lossy()).unwrap();
+            out.reset().unwrap();
         }
 
         io::copy(&mut File::open(filename).unwrap(), &mut io::stdout()).unwrap();
